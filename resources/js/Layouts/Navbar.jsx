@@ -20,7 +20,7 @@ export default function Navbar() {
                         </div>
 
                         <div className='hidden space-x-8 sm:-my-px sm:ml-10 sm:flex'>
-                            <NavLink href={'#'} active={false}>
+                            <NavLink href={route('products.index')} active={route().current('products.*')}>
                                 Products
                             </NavLink>
                         </div>

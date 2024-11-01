@@ -1,6 +1,6 @@
 import AppLayout from '@/Layouts/AppLayout';
 import { Head } from '@inertiajs/react';
-// import Home from '@/Pages/Home';
+
 import Container from '@/Components/Container';
 
 export default function Dashboard({ auth }) {
