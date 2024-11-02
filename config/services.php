@@ -34,5 +34,14 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'rajaongkir' => [
+        'origin' => env('RAJAONGKIR_ORIGIN', '278'),
+        'origin_type' => env(
+            'RAJAONGKIR_ORIGIN_TYPE',
+            'city'
+        ), // 'city' atau 'subdistrict
+        'key' => env('RAJAONGKIR_KEY', '71*******************'),
+        'base_url' => env('RAJAONGKIR_BASE_URL', 'https://api.rajaongkir.com/starter'),
+    ],
 
 ];
