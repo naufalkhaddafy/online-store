@@ -12,6 +12,14 @@ class CourierSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        collect([
+            ['name' => 'Jalur Nugraha Ekakurir', 'code' => 'jne', 'enabled' => true],
+            ['name' => 'Pos Indonesia', 'code' => 'pos', 'enabled' => false],
+            ['name' => 'Citra Van Titipan Kilat', 'code' => 'tiki', 'enabled' => true],
+            ['name' => 'ID Express', 'code' => 'ide', 'enabled' => true],
+            ['name' => 'SiCepat Express', 'code' => 'sicepat', 'enabled' => true],
+            ['name' => 'J&T Express', 'code' => 'j&t', 'enabled' => false],
+            ['name' => 'Ninja Xpress', 'code' => 'ninja', 'enabled' => true],
+        ])->each(fn($courier) => \App\Models\Courier::create($courier));
     }
 }
