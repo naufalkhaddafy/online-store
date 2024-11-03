@@ -10,6 +10,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShippingAddressController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +32,8 @@ Route::resource('carts', CartController::class)
 Route::resource('shipping-addresses', ShippingAddressController::class)
     ->except('show')
     ->middleware('auth');
+
+Route::get('transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index');

@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->shippingAddresses()->one()->where('is_default', true);
     }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'customer_id');
+    }
 }
