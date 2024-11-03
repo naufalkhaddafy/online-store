@@ -9,7 +9,7 @@ class MidtransService
 {
     protected mixed $baseUrl;
     protected PendingRequest $http;
-    private mixed $apiKey;
+    protected mixed $apiKey;
 
     public function __construct()
     {
