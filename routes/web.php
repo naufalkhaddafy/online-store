@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CheckPostageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
@@ -30,9 +32,16 @@ Route::resource('shipping-addresses', ShippingAddressController::class)
     ->except('show')
     ->middleware('auth');
 
+Route::middleware('auth')->group(function () {
+    Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('checkout', [CheckoutController::class, 'create'])->name('checkout.create');
+    Route::post('checkout/process', [CheckoutController::class, 'store'])->name('checkout.store');
+});
 
 Route::get('cities/{province}', [LocationController::class, 'city'])->name('location.city');
 Route::get('sub-district/{city}', [LocationController::class, 'subdistrict'])->name('location.subdistrict');
+
+Route::post('check-postage', CheckPostageController::class)->name('check-postage');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
