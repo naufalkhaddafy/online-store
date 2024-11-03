@@ -166,6 +166,7 @@ class CheckoutController extends Controller
                 ],
                 ...$paymentMethodParameter,
             ];
+
             // Create transaction
             $response = $transactionService->create($params)->json();
 

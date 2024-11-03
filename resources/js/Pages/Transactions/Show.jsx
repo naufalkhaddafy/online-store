@@ -1,14 +1,31 @@
 import AppLayout from '@/Layouts/AppLayout';
 import { Head } from '@inertiajs/react';
+import Shipping from '@/Pages/Transactions/Partials/Shipping';
+import BillingAddress from '@/Pages/Transactions/Partials/BillingAddress';
 import { useState } from 'react';
+import Container from '@/Components/Container';
+import ProductDetail from '@/Pages/Transactions/Partials/ProductDetail';
+import Status from '@/Pages/Transactions/Partials/Status';
 
 export default function Show({ transaction }) {
     const [paid, setPaid] = useState(false);
-
     return (
         <>
             <Head title={transaction.order_id} />
-            {/*  transaction detail goes here  */}
+            <Container>
+                <div className='py-8 lg:py-16'>
+                    <div className='border-b border-t border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border'>
+                        <BillingAddress transaction={transaction} paid={paid} />
+                        <div className='border-t px-4 py-6 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8'>
+                            <ProductDetail transaction={transaction} />
+
+                            <Shipping transaction={transaction} />
+                        </div>
+
+                        <Status transaction={transaction} />
+                    </div>
+                </div>
+            </Container>
         </>
     );
 }
