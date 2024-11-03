@@ -4,8 +4,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShippingAddressController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,6 +25,14 @@ Route::resource('products', ProductController::class)
 Route::resource('carts', CartController::class)
     ->except(['edit', 'create', 'show'])
     ->middleware('auth');
+
+Route::resource('shipping-addresses', ShippingAddressController::class)
+    ->except('show')
+    ->middleware('auth');
+
+
+Route::get('cities/{province}', [LocationController::class, 'city'])->name('location.city');
+Route::get('sub-district/{city}', [LocationController::class, 'subdistrict'])->name('location.subdistrict');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
