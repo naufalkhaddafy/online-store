@@ -6,7 +6,7 @@ export default function Guides({ bank }) {
                     <h3>
                         <strong>How to pay using BNI Virtual Account</strong>
                     </h3>
-                    <ol class='list-decimal pl-6'>
+                    <ol className='list-decimal pl-6'>
                         <li>
                             Go to the nearest BNI ATM or BNI Syariah ATM and select the{' '}
                             <strong>Other Transactions</strong> menu.
@@ -31,7 +31,7 @@ export default function Guides({ bank }) {
             {bank === 'mandiri' && (
                 <div className='prose p-4'>
                     <h3>How to pay using Mandiri Virtual Account</h3>
-                    <ol class='list-decimal pl-6'>
+                    <ol className='list-decimal pl-6'>
                         <li>
                             Go to the nearest Mandiri ATM and select the <strong>Other Transactions</strong> menu.
                         </li>

@@ -31,7 +31,7 @@ export default function BankTransfer({ transaction }) {
                 </div>
             </div>
             {transaction.payment_method?.biller_code && (
-                <div className='mt-8'>
+                <div className='mt-8 ml-5'>
                     Billing number: <strong className='font-semibold'>{transaction.payment_method.biller_code}</strong>
                 </div>
             )}

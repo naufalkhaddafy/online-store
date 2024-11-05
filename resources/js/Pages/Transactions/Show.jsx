@@ -8,7 +8,16 @@ import ProductDetail from '@/Pages/Transactions/Partials/ProductDetail';
 import Status from '@/Pages/Transactions/Partials/Status';
 
 export default function Show({ transaction }) {
-    const [paid, setPaid] = useState(false);
+    const [paid, setPaid] = useState(transaction.transaction_status === 'settlement');
+    Echo.private(`transactions.${transaction.customer_id}`).listen('InvoicePaid', (event) => {
+        if (
+            event.transaction.transaction_status === 'settlement' &&
+            transaction.order_id === event.transaction.order_id
+        ) {
+            setPaid(true);
+        }
+    });
+
     return (
         <>
             <Head title={transaction.order_id} />
@@ -53,6 +62,16 @@ Show.layout = (page) => (
                     <div className='mt-4 sm:mt-0'>
                         <a href='#' className='font-medium text-blue-600 hover:text-blue-500'>
                             View invoice
+                            <span aria-hidden='true'> &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+                <div className='mt-2 pb-5 text-sm sm:flex sm:justify-between'>
+                    <div className='mt-4 sm:mt-0'>
+                        <a
+                            href={route('invoice.download', [page.props.transaction])}
+                            className='font-medium text-blue-600 hover:text-blue-500'>
+                            Download invoice
                             <span aria-hidden='true'> &rarr;</span>
                         </a>
                     </div>

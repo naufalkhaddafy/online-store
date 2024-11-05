@@ -6,7 +6,9 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CheckPostageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\NotificationHandlerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShippingAddressController;
@@ -51,5 +53,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('invoice/{transaction}/download', [InvoiceController::class, 'download'])->name('invoice.download');
+
+Route::post('api/notification/handling', [NotificationHandlerController::class, 'handling']);
 
 require __DIR__ . '/auth.php';
