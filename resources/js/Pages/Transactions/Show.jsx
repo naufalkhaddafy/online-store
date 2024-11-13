@@ -60,14 +60,6 @@ Show.layout = (page) => (
                         </dd>
                     </dl>
                     <div className='mt-4 sm:mt-0'>
-                        <a href='#' className='font-medium text-blue-600 hover:text-blue-500'>
-                            View invoice
-                            <span aria-hidden='true'> &rarr;</span>
-                        </a>
-                    </div>
-                </div>
-                <div className='mt-2 pb-5 text-sm sm:flex sm:justify-between'>
-                    <div className='mt-4 sm:mt-0'>
                         <a
                             href={route('invoice.download', [page.props.transaction])}
                             className='font-medium text-blue-600 hover:text-blue-500'>

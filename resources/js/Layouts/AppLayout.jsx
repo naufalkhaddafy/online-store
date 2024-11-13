@@ -1,8 +1,10 @@
+import FlashMessage from '@/Components/FlashMessage';
 import Navbar from '@/Layouts/Navbar';
 
 export default function AppLayout({ header, children }) {
     return (
         <div className='min-h-screen bg-gray-100'>
+            <FlashMessage />
             <Navbar />
 
             {header && (

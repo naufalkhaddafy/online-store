@@ -24,6 +24,7 @@ Route::get('dashboard', DashboardController::class)->middleware(['auth', 'verifi
 Route::resource('categories', CategoryController::class)
     ->scoped(['category' => 'slug']);
 
+Route::get('products/list', [ProductController::class, 'list'])->name('products.list');
 Route::resource('products', ProductController::class)
     ->scoped(['product' => 'slug']);
 
