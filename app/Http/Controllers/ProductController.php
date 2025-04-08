@@ -60,11 +60,11 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $product = Product::query()->create([
-            'picture' => $request->file('picture')->store('images/products'),
+            'picture' =>  $request->file('picture') ? $request->file('picture')->store('images/products') : null,
             'name' => $name = $request->name,
             'slug' => str($name)->slug(),
             'description' => $request->description,
-            'category_id' => $request->cagetory_id,
+            'category_id' => $request->category_id,
             'price' => $request->price,
             'weight' => $request->weight,
         ]);
@@ -92,11 +92,11 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         $product->update([
-            'picture' => $request->file('picture')->store('images/products'),
+            'picture' => $request->file('picture') ? $request->file('picture')->store('images/products') : null,
             'name' => $name = $request->name,
             'slug' => str($name)->slug(),
             'description' => $request->description,
-            'category_id' => $request->cagetory_id,
+            'category_id' => $request->category_id,
             'price' => $request->price,
             'weight' => $request->weight,
         ]);
